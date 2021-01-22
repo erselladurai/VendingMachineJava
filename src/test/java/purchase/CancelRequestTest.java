@@ -1,103 +1,93 @@
 package purchase;
 
 import base.Common;
-
 import com.machine.entity.Item;
-
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 @Tag("VendingMachineTest")
-public class PurchaseAfterCancelRequest extends Common {
+public class CancelRequestTest extends Common {
+
     @Test
-    public void testPurchaseAfterCancelCokeItemWithMorePrice() {
+    public void testCancelCokeItemWithMorePrice() {
         Item product = Item.COKE;
         String coinsList = "DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
-        validateCancelRequest(coinsList);
-        validateBuyItemMorePrice(product, coinsList);
+        validateCancelRequest(coinsList);;
     }
 
     @Test
-    public void testPurchaseAfterCancelPepsiItemWithMorePrice() {
+    public void testCancelPepsiItemWithMorePrice() {
         Item product = Item.PEPSI;
         String coinsList = "PENNY:DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
         validateCancelRequest(coinsList);
-        validateBuyItemMorePrice(product, coinsList);
     }
 
     @Test
-    public void testPurchaseAfterCancelSodaItemWithMorePrice() {
+    public void testCancelSodaItemWithMorePrice() {
         Item product = Item.SODA;
         String coinsList = "QUARTER:DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
         validateCancelRequest(coinsList);
-        validateBuyItemMorePrice(product, coinsList);
     }
 
     @Test
-    public void testBuySodaItemWithExactPrice() {
+    public void testCancelBuySodaItemWithExactPrice() {
         Item product = Item.SODA;
         String coinsList = "NICKLE:DIME:QUARTER:NICKLE";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
         validateCancelRequest(coinsList);
-        validateBuyItemExactPrice(product, coinsList);
     }
 
     @Test
-    public void testPurchaseAfterCancelPepsiItemWithExactPrice() {
+    public void testCancelBuyPepsiItemWithExactPrice() {
         Item product = Item.PEPSI;
         String coinsList = "DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
         validateCancelRequest(coinsList);
-        validateBuyItemExactPrice(product, coinsList);
     }
 
     @Test
-    public void testPurchaseAfterCancelCokeItemWithExactPrice() {
+    public void testCancelCokeItemWithExactPrice() {
         Item product = Item.COKE;
         String coinsList = "QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
         validateCancelRequest(coinsList);
-        validateBuyItemExactPrice(product, coinsList);
     }
 
     @Test
-    public void testPurchaseAfterCancelCokeItemWithLessPrice() {
+    public void testCancelCokeItemWithLessPrice() {
         Item product = Item.COKE;
         String coinsList = "DIME:PENNY:NICKLE";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
         validateCancelRequest(coinsList);
-        validateBuyItemLessPrice(product, coinsList);
     }
 
     @Test
-    public void testPurchaseAfterCancelPepsiItemWithLessPrice() {
+    public void testCancelPepsiItemWithLessPrice() {
         Item product = Item.PEPSI;
         String coinsList = "DIME:PENNY:PENNY";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
         validateCancelRequest(coinsList);
-        validateBuyItemLessPrice(product, coinsList);
     }
 
     @Test
-    public void testPurchaseAfterCancelSodaItemWithLessPrice() {
+    public void testCancelSodaItemWithLessPrice() {
         Item product = Item.SODA;
         String coinsList = "DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
         validateCancelRequest(coinsList);
-        validateBuyItemLessPrice(product, coinsList);
     }
 }

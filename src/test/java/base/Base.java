@@ -7,19 +7,15 @@ import org.junit.jupiter.api.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class Base  {
-    public static VendingMachine vm;
-
+    public VendingMachine vm;
 
     @BeforeEach
     public void setUp() {
         vm = VendingMachineFactory.createVendingMachine();
-
-
     }
 
     @AfterEach
     public void tearDown() {
-
         vm = null;
     }
 }

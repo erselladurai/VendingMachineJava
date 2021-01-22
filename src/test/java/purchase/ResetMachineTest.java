@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Tag("VendingMachineTest")
-public class ResetMachine extends Common {
+public class ResetMachineTest extends Common {
 
     @Test
     @Tag("Reset")

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Tag("VendingMachineTest")
-public class Purchase extends Common {
+public class PurchaseTest extends Common {
 
     @Test
     public void testCokeItemWithMorePrice() {
