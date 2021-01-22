@@ -2,7 +2,7 @@ package com.machine.entity;
 
 /**
  * Items or products supported by Vending Machine.
- * @author Javin Paul
+ * @author Selladurai Rajan
  */
 public enum Item{
     COKE("Coke", 25), PEPSI("Pepsi", 35), SODA("Soda", 45);

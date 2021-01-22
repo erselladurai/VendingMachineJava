@@ -2,7 +2,7 @@ package com.machine.entity;
 
 /**
  * A parameterized utility class to hold two different object.
- * @author Javin Paul
+ * @author Selladurai Rajan
  */
 public class Bucket<E1, E2> {
     private E1 first;

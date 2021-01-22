@@ -1,4 +1,4 @@
-package reset;
+package purchase;
 
 import base.Base;
 import base.Common;

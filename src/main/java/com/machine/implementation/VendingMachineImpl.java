@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Sample implementation of Vending Machine in Java
  *
- * @author Javin Paul
+ * @author Selladurai Rajan
  */
 public class VendingMachineImpl implements VendingMachine {
     private final Inventory<Coin> cashInventory = new Inventory<Coin>();
@@ -37,7 +37,7 @@ public class VendingMachineImpl implements VendingMachine {
         }
 
         for (Item i : Item.values()) {
-            itemInventory.put(i, 20);
+            itemInventory.put(i, 50);
         }
 
     }

@@ -7,7 +7,7 @@ import com.machine.entity.Item;
 import java.util.List;
 
 /**
- * Decleare public API for Vending Machine * @author Javin Paul
+ * Decleare public API for Vending Machine * @author Selladurai Rajan
  */
 public interface VendingMachine {
     public long selectItemAndGetPrice(Item item);
