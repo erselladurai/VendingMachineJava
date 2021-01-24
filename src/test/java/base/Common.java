@@ -12,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class Common extends Base {
 
-    public void validateSelectItemAndPrice(Item product){
+    public void validateSelectItemAndPrice(String product){
         long price = vm.selectItemAndGetPrice(product);
-        assertEquals(product.getPrice(), price);
+        assertEquals(Item.valueOf(product).getPrice(), price);
     }
 
     public void insertCoins(String coinsList){
-        Arrays.stream(coinsList.split(":")).forEach(a -> vm.insertCoin(Coin.valueOf(a)));
+        Arrays.stream(coinsList.split(":")).forEach(a -> vm.insertCoin(a));
     }
 
     public Bucket<Item, List<Coin>> collectAndValidateItem(Item product){
@@ -54,22 +54,22 @@ public class Common extends Base {
         assertEquals(exception.getClass(), NotFullPaidException.class);
     }
 
-    public void validateBuyItemMorePrice(Item product, String coinsList){
+    public void validateBuyItemMorePrice(String product, String coinsList){
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
-        Bucket<Item, List<Coin>> bucket = collectAndValidateItem(product);
+        Bucket<Item, List<Coin>> bucket = collectAndValidateItem(Item.valueOf(product));
         validateChangeisNotEmpty(bucket.getSecond());
-        validateChange(bucket.getSecond(),product,coinsList);
+        validateChange(bucket.getSecond(),Item.valueOf(product),coinsList);
     }
 
-    public void validateBuyItemExactPrice(Item product, String coinsList){
+    public void validateBuyItemExactPrice(String product, String coinsList){
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
-        Bucket<Item, List<Coin>> bucket = collectAndValidateItem(product);
+        Bucket<Item, List<Coin>> bucket = collectAndValidateItem(Item.valueOf(product));
         validateChangeisEmpty(bucket.getSecond());
     }
 
-    public void validateBuyItemLessPrice(Item product, String coinsList){
+    public void validateBuyItemLessPrice(String product, String coinsList){
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
         validateNotFullPaidError();

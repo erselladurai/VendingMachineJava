@@ -10,9 +10,9 @@ import java.util.List;
  * Decleare public API for Vending Machine * @author Selladurai Rajan
  */
 public interface VendingMachine {
-    public long selectItemAndGetPrice(Item item);
+    public long selectItemAndGetPrice(String item);
 
-    public void insertCoin(Coin coin);
+    public void insertCoin(String coin);
 
     public List<Coin> refund();
 

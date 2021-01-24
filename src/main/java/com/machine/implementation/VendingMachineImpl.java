@@ -5,13 +5,13 @@ import com.machine.api.VendingMachine;
 import com.machine.entity.Bucket;
 import com.machine.entity.Coin;
 import com.machine.entity.Item;
-import com.machine.exception.NotFullPaidException;
-import com.machine.exception.NotSufficientChangeException;
-import com.machine.exception.SoldOutException;
+import com.machine.exception.*;
+import utils.PropertyUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Sample implementation of Vending Machine in Java
@@ -30,25 +30,31 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
     private void initialize() {
-        //initialize machine with 5 coins of each denomination
-        //and 5 cans of each com.machine.entity.Item
+        //initialize machine with coins of each denomination (Number of coins decided from config)
+        //and each com.machine.entity.Item (Number of items from each category decided from config)
         for (Coin c : Coin.values()) {
-            cashInventory.put(c, 5);
+            cashInventory.put(c, Integer.parseInt(Objects.requireNonNull(PropertyUtils.getProperty("NumberOfCoins"))));
         }
 
         for (Item i : Item.values()) {
-            itemInventory.put(i, 50);
+            itemInventory.put(i, Integer.parseInt(Objects.requireNonNull(PropertyUtils.getProperty("NumberOfItems"))));
         }
 
     }
 
     @Override
-    public long selectItemAndGetPrice(Item item) {
-        if (itemInventory.hasItem(item)) {
-            currentItem = item;
-            return currentItem.getPrice();
+    public long selectItemAndGetPrice(String item) {
+        try{
+            if (itemInventory.hasItem(Item.valueOf(item))) {
+                currentItem = Item.valueOf(item);
+                return currentItem.getPrice();
+            }
+            throw new SoldOutException("Sold Out, Please buy another item");
         }
-        throw new SoldOutException("Sold Out, Please buy another item");
+        catch (IllegalArgumentException e)
+        {
+            throw new InvalidItemException("Invalid Item");
+        }
     }
 
     @Override
@@ -61,9 +67,14 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
     @Override
-    public void insertCoin(Coin coin) {
-        currentBalance = currentBalance + coin.getDenomination();
-        cashInventory.add(coin);
+    public void insertCoin(String coin) {
+        try{
+            currentBalance = currentBalance + Coin.valueOf(coin).getDenomination();
+            cashInventory.add(Coin.valueOf(coin));
+        }
+        catch (IllegalArgumentException e){
+         throw new InvalidCoinException("Invalid Coin");
+        }
     }
 
     @Override

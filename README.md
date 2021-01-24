@@ -15,7 +15,7 @@ This is recommended for a handful of features to mimic the execution on your loc
  - Create a new ***JUnit*** Run configuration in intelliJ
  - Give some configuration name as your own.
  - In the ***configuration*** tab, select the ***Test Kind*** as **Package**
- - Enter the text **purchase** in the **Package** text box and click apply
+ - Enter the text **vending.machine.test** in the **Package** text box and click apply
  - - The scenario(s) can be run or debug using this option
  - Finally click on run button to run the junit unit tests with the configuration
  - Results can be viewed in the Console.

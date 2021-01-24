@@ -1,15 +1,17 @@
-package purchase;
+package vending.machine.test;
 
 import base.Common;
 import com.machine.entity.Item;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Tag("VendingMachineTest")
 public class PurchaseAfterCancelRequestTest extends Common {
     @Test
+    @DisplayName("Validation of purchase coke item with more price")
     public void testPurchaseAfterCancelCokeItemWithMorePrice() {
-        Item product = Item.COKE;
+        String product = "COKE";
         String coinsList = "DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
@@ -18,8 +20,9 @@ public class PurchaseAfterCancelRequestTest extends Common {
     }
 
     @Test
+    @DisplayName("Validation of purchase pepsi item with more price")
     public void testPurchaseAfterCancelPepsiItemWithMorePrice() {
-        Item product = Item.PEPSI;
+        String product = "PEPSI";
         String coinsList = "PENNY:DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
@@ -28,8 +31,9 @@ public class PurchaseAfterCancelRequestTest extends Common {
     }
 
     @Test
+    @DisplayName("Validation of purchase soda item with more price")
     public void testPurchaseAfterCancelSodaItemWithMorePrice() {
-        Item product = Item.SODA;
+        String product = "SODA";
         String coinsList = "QUARTER:DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
@@ -38,8 +42,9 @@ public class PurchaseAfterCancelRequestTest extends Common {
     }
 
     @Test
+    @DisplayName("Validation of purchase soda item with exact price")
     public void testBuySodaItemWithExactPrice() {
-        Item product = Item.SODA;
+        String product = "SODA";
         String coinsList = "NICKLE:DIME:QUARTER:NICKLE";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
@@ -48,8 +53,9 @@ public class PurchaseAfterCancelRequestTest extends Common {
     }
 
     @Test
+    @DisplayName("Validation of purchase pepsi item with exact price")
     public void testPurchaseAfterCancelPepsiItemWithExactPrice() {
-        Item product = Item.PEPSI;
+        String product = "PEPSI";
         String coinsList = "DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
@@ -58,8 +64,9 @@ public class PurchaseAfterCancelRequestTest extends Common {
     }
 
     @Test
+    @DisplayName("Validation of purchase coke item with exact price")
     public void testPurchaseAfterCancelCokeItemWithExactPrice() {
-        Item product = Item.COKE;
+        String product = "COKE";
         String coinsList = "QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
@@ -68,8 +75,9 @@ public class PurchaseAfterCancelRequestTest extends Common {
     }
 
     @Test
+    @DisplayName("Validation of purchase coke item with less price")
     public void testPurchaseAfterCancelCokeItemWithLessPrice() {
-        Item product = Item.COKE;
+        String product = "COKE";
         String coinsList = "DIME:PENNY:NICKLE";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
@@ -78,8 +86,9 @@ public class PurchaseAfterCancelRequestTest extends Common {
     }
 
     @Test
+    @DisplayName("Validation of purchase pepsi item with less price")
     public void testPurchaseAfterCancelPepsiItemWithLessPrice() {
-        Item product = Item.PEPSI;
+        String product = "PEPSI";
         String coinsList = "DIME:PENNY:PENNY";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
@@ -88,8 +97,9 @@ public class PurchaseAfterCancelRequestTest extends Common {
     }
 
     @Test
+    @DisplayName("Validation of purchase soda item with less price")
     public void testPurchaseAfterCancelSodaItemWithLessPrice() {
-        Item product = Item.SODA;
+        String product = "SODA";
         String coinsList = "DIME:QUARTER";
         validateSelectItemAndPrice(product);
         insertCoins(coinsList);
